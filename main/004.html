@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<link href="../css/003.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="nav">
+        <!--首页导航栏-->
+        <!--<div class="nav-left">    首页左侧导航，标记
+        Lingxi's Home
+    </div>-->
+        <div class="nav-right-a-margin">
+            <!--首页右侧导航边距-->
+            <div class="nav-right">
+                <!--首页右侧导航-->
+                <a href="../index.html">首页</a> 
+                <a href="../article.html">文章</a> 
+                <a href="../about.html">关于</a> 
+                <a href="../message.html">留言板</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainContent">
+        <h2>群晖设置阿里云IPv6DDNS自动更新</h2>
+        <br />
+        <h4>灵希&nbsp;&nbsp;|&nbsp;&nbsp;2020年10月29日</h4>
+        <br />
+            <p>在阿里云右上角点击：AccessKey管理，创建一组新秘的访问秘钥</p>
+            <img src="../image/图片 1.png" height="214px" width="306px" />
+            <p>创建完成后阿里云会生成一份AccessKey文件，请妥善保管到电脑</p>
+            <p>获取网卡名称，绑定动态变化的IPv6地址，找到当前使用的网卡，打开群晖的ssh选项</p>
+            <img src="../image/图片 4.png" height="517" width="630" />
+            <p>使用ssh工具连接到群晖，输入命令 ifconfig</p>
+            <img src="../image/图片 5.png" height="437" width="650" />
+            <p>下载文件<a href="https://wwa.lanzous.com/i7OMDhv6l6b">aliddns.sh（附件）</a>，打开文件修改前4个，对照网卡名称是否一致，若不同，以实际网卡名称为准</p>
+            <img src="../image/图片 2.png" height="99px" width="486px" />
+            <br />
+            <img src="../image/图片 6.png" height="195px" width="529px" />
+            <p>保存上传至群晖，右键属性文件的位置</p>
+            <img src="../image/图片 3.png" height="166px" width="553px" />
+            <p>在阿里云域名解析的地方添加一条AAAA记录，碧如 f03:0:0:0:0:0:0:c1 <span class="red">注意不是A记录，[A记录是IPv4，AAAA记录是IPv6]
+            </span></p>
+            <img src="../image/图片 8.png" height="439px" width="675px" />
+            <p>先测试脚本，在ssh中输入sh /volume1/homes/admin/aliddns.sh,出现updated record显示更新记录成功</p>
+            <img src="../image/图片 7.png" height="174px" width="641px" />
+            <p>还可以去阿里云后台域名解析查看一下，可以看到刚才的IP地址已经变成新的</p>
+            <img src="../image/图片 9.png" height="111px" width="715px" />
+            <p>现在也可以用域名访问群辉，输入"nas.zhoudy.ltd:5000"，能进入登陆页面，代表设置成功</p>
+            <p>补充一下HTTPS是加密协议，需要证书才能提供支持，不然就会提示不安全，群晖的HTTPS端口是5001，输入"https://nas.zhoudy.ltd:5001/"</p>
+            <img src="../image/图片 10.png" height="481px" width="851px" />
+            <p>每次更新不可能手动执行一次脚本，利用群晖的自动任务，在控制面板选择任务计划-新建-计划的任务-用户自定义脚本，设置任务名称，以及运行频率，脚本中输入"/volume1/homes/admin/aliddns.sh"，然后保存就可以</p>
+            <img src="../image/图片 11.png" height="291px" width="764px" />
+            <br />
+            <img src="../image/图片 12.png" height="280px" width="750px" />
+            <br />
+            <img src="../image/图片 13.png" height="319px" width="499px" />
+            <br />
+            <img src="../image/图片 14.png" height="331px" width="497px" />
+            <p>最后，群晖外网访问还是很实用的，喜欢折腾的，在外边好多都用不了，那就很难受，所以动起来，设置属于你的群晖吧</p>
+            
+    </div>
+    <div class="main">
+
+    </div>
+
+
+
+
+
+
+
+    
+</body>
+</html>
